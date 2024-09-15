@@ -23,7 +23,7 @@ function List({nameList}) {
             <ol>
                 {
                     list.map((item, i) => (
-                        <li key={i}>
+                        <li className="my-2" key={i}>
                             {item}
                             <button
                                 onClick={() => deleteItem(i)}

@@ -4,21 +4,22 @@ function Formulaire(){
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [erreur, setErreur] = useState("");
+    const [erreur, setErreur] = useState(false)
+
 
 
 
     const handleChange = (e,setter) => {
         e.preventDefault()
-        setter(e.target.value);
+        setter(e.target.value)
     }
 
     const displayFormulaire = (e) => {
         e.preventDefault()
         if (firstName === "" || lastName === "") {
-            setErreur("Veuillez remplir tous les champs");
-        } else {
-            setErreur("");
+            setErreur(true);
+        }else{
+            setErreur(false)
         }
 
     }
@@ -48,8 +49,7 @@ function Formulaire(){
                     Afficher
                 </button>
             </form>
-
-            {erreur !== "" ? erreur : firstName + " " + lastName}
+            {erreur ? "Veuillez remplir tous les champs" : firstName + " " + lastName}
         </>
     );
 }
