@@ -22,7 +22,7 @@ function Persone() {
                     </h2>
                 </li>
                 <li>
-                    {persone.age}
+                    {persone.age} ans
                 </li>
                 <li>
                     <button onClick={incrementAge}>Ajouter une année</button>

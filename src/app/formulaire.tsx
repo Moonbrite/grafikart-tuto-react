@@ -1,5 +1,6 @@
 "use client";
 import {useState} from "react";
+import {TextField} from "@mui/material";
 function Formulaire(){
 
     const [firstName, setFirstName] = useState("")
@@ -8,48 +9,44 @@ function Formulaire(){
 
 
 
-
     const handleChange = (e,setter) => {
         e.preventDefault()
         setter(e.target.value)
-    }
-
-    const displayFormulaire = (e) => {
-        e.preventDefault()
         if (firstName === "" || lastName === "") {
             setErreur(true);
         }else{
             setErreur(false)
         }
-
     }
-    
+
 
     return(
         <>
             <form action="">
-                <input
+                <TextField
+                    className="me-3"
+                    error={erreur}
                     onChange={(e) => handleChange(e, setFirstName)}
                     type="text"
-                    name="firstName"
-                    placeholder="first Name"
+                    name="lastName"
+                    id="outlined-basic"
+                    label="Prénom"
+                    variant="outlined"
+                    helperText={erreur && "Veuillez entrer un Prénom"}
                     required
                 />
-                <input
+                <TextField
+                    error={erreur}
                     onChange={(e) => handleChange(e, setLastName)}
                     type="text"
                     name="lastName"
-                    placeholder="last Name"
+                    id="outlined-basic"
+                    label="Nom"
+                    variant="outlined"
+                    helperText={erreur && "Veuillez entrer un Nom"}
                     required
                 />
-                <button
-                    type="button"
-                    onClick={displayFormulaire}
-                >
-                    Afficher
-                </button>
             </form>
-            {erreur ? "Veuillez remplir tous les champs" : firstName + " " + lastName}
         </>
     );
 }
